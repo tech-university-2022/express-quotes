@@ -13,5 +13,7 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+        "linebreak-style": ["errors","windows"],
+        "no-console": 0
     }
 }
