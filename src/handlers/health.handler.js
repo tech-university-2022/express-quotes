@@ -1,6 +1,5 @@
-const axios = require('axios').default;
-const { firstFiftyQuote } = require("../services/health.service");
-const value = 50;
+const { firstFiftyQuote, specificQuote } = require("../services/health.service");
+
 
 const healthHandler = async (req, res) => {
   try {
@@ -13,7 +12,19 @@ const healthHandler = async (req, res) => {
   }
 }
 
+const specificQuoteHandler = async (req, res) => {
+  try {
+    const specificQuoteObject = await specificQuote(req, res);
+    res.json({
+      specificQuoteObject
+    }).status(200);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 
 module.exports = {
   healthHandler,
+  specificQuoteHandler
 };
