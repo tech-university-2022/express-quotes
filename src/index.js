@@ -1,14 +1,12 @@
 const express = require('express');
 const env = require('dotenv');
-const { healthRouter } = require('./routes/health.route');
+const { quotesRouter } = require('./routes/quotes.route');
 
-env.config();
-
-const port = process.env.PORT || 3000;
 const app = express();
+const port = process.env.PORT || 3000;
 
-app.use('/health', healthRouter);
+app.use('/quotes', quotesRouter);
 
 app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
+  console.log(`Server started. Listening on http://localhost:${port}`);
 });
