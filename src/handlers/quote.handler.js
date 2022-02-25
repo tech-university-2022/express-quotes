@@ -14,7 +14,7 @@ const quoteHandler = async (req, res) => {
 
 const specificQuoteHandler = async (req, res) => {
   try {
-    const specificQuoteObject = await specificQuote(req, res);
+    const specificQuoteObject = await specificQuote(req.params.index);
     res.json({
       specificQuoteObject
     }).status(200);

@@ -5,16 +5,16 @@ const quoteURL = 'https://type.fit/api/quotes';
 
 const getQuotes = async () => {
     try {
-        return await axios.get(`${quoteURL}`)
-        // const response = await axios.get(`${quoteURL}`);
-        // const completeQuoteArray = response.data;
-        // return completeQuoteArray;
+        //return await axios.get(`${quoteURL}`)
+        const response = await axios.get(`${quoteURL}`);
+        const completeQuoteArray = response.data;
+        return completeQuoteArray;
     } catch (error) {
         console.error(error);
     }
 }
 
-const firstFiftyQuote = async (req, res) => {
+const firstFiftyQuote = async () => {
     try {
         const completeQuoteArray = await getQuotes();
         return completeQuoteArray.slice(0, 50);
@@ -23,10 +23,10 @@ const firstFiftyQuote = async (req, res) => {
     }
 }
 
-const specificQuote = async (req, res) => {
+const specificQuote = async (index) => {
     try {
         const completeQuoteArray = await getQuotes();
-        return completeQuoteArray[req.params.index];
+        return completeQuoteArray[index];
     } catch (error) {
         console.error(error);
     }
