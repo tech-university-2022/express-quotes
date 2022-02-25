@@ -1,15 +1,16 @@
-const axios = require('axios').default;
-const { getFirstNQuotes } = require('../services/first50.service');
-
-const handler =  async (req,res) => {
-    const first50Quotes = await new Promise((resolve) => {
-        resolve(axios.get('https://type.fit/api/quotes'));
-    });
+const { getFirstNQuotes, getNthQuote } = require('../utils/first50.utils');
+const quoteService = require('../services/quotes.service');
+const first50Handler =  async (req,res) => {
+    const allQuotes = await quoteService.getAllQuotes();
     res.set('Content-Type', 'text/html');
-    const responseData = getFirstNQuotes(first50Quotes.data, 50);
-    if(!responseData) res.status(200).send('No Quotes found! :(');
-    else res.status(200).send(`<h2>First 50 Quotes:</h2><hr>` + responseData);
+    const first50Quotes = getFirstNQuotes(allQuotes.data, 50);
+    if(!first50Quotes) res.status(200).send('No Quotes found! :(\n');
+    else res.status(200).send(`<h2>First 50 Quotes:</h2><hr>` + first50Quotes);
 };
+const specificQuoteHandler = async (req,res) => {
+
+}
 module.exports = {
-    first50Handler: handler,
+    first50Handler,
+    specificQuoteHandler,
 }

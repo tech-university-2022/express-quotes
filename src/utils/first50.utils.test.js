@@ -1,6 +1,6 @@
-const {getFirstNQuotes} = require('./first50.service');
+const {getFirstNQuotes, getNthQuote} = require('./first50.utils');
+const { testQuotes } = require('../constants/quotes.constants');
 describe('GetFirstNQuotes function', () => {
-    const testQuotes = [{author:'Poorna',text:'Hi'},{author:'Hoseok',text:'Hope'},{author:'Namjoon',text:'Rap'}];
     it('should return a string of the first N Quotes in an array with indexes',() => {
         expect(getFirstNQuotes(testQuotes,2))
         .toBe(`1. Poorna: Hi <br>2. Hoseok: Hope <br>`);
@@ -52,6 +52,62 @@ describe('GetFirstNQuotes function', () => {
             expect(getFirstNQuotes());
         } catch(err) {
             expect(err.message).toBe('Invalid, enter input!');
+        }
+    });
+});
+describe('GetNthQuote function', () => {
+    const testQuotes = [{author:'Poorna',text:'Hi'},{author:'Hoseok',text:'Hope'},{author:'Namjoon',text:'Rap'}];
+    it('should return the quote at the Nth position',() => {
+        expect(getNthQuote(testQuotes,2))
+        .toBe(`The quote at position 2: Hoseok: Hope <br>`);
+    });
+    it('should return invalid message if position is not given', () => {
+        try{
+            getNthQuote(testQuotes);
+        } catch(err) {
+            expect(err.message).toBe('Invalid, enter a proper position!');
+        }
+    });
+    it('should return invalid message if position is greater than the total quotes', () => {
+        try{
+            getNthQuote(testQuotes,10);
+        } catch(err) {
+            expect(err.message).toBe('There is no quote at index 10!');
+        }
+    });
+    it('should return invalid message i finput quotes not given', () => {
+        try{
+            getNthQuote();
+        } catch(err) {
+            expect(err.message).toBe('Invalid, enter input!');
+        }
+    });
+    it('should return invalid message if position is not positive', () => {
+        try{
+            getNthQuote(testQuotes,-3);
+        } catch(err) {
+            expect(err.message).toBe('Invalid, enter a proper position!');
+        }
+    });
+    it('should return invalid message if position is not a number', () => {
+        try{
+            getNthQuote(testQuotes,'example');
+        } catch(err) {
+            expect(err.message).toBe('Invalid, enter a proper position!');
+        }
+    });
+    it('should return invalid message if input is not an array',() => {
+        try{
+            getNthQuote('example',4);
+        } catch(err) {
+            expect(err.message).toBe('Invalid quote input, enter an array of quotes!');
+        }
+    });
+    it('should return invalid message if input is not an array of quotes',() => {
+        try{
+            getNthQuote([1,2,3],4);
+        } catch(err) {
+            expect(err.message).toBe('Invalid quote input, enter an array of quotes!');
         }
     });
 });
