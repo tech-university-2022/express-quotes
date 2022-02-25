@@ -12,14 +12,14 @@ const getQuotes = async () => {
     }
 }
 
-const fetchFiftyQuote = async (req, res) => {
+const fetchFiftyQuote = async () => {
     const completeQuotes = await getQuotes();
     return completeQuotes.data.slice(0,50)
 }
-const specificQuote = async (req, res) => {
+const specificQuote = async (index) => {
     try {
         const completeQuoteArray = await getQuotes();
-        return completeQuoteArray.data[req.params.index];
+        return completeQuoteArray.data[index];
     } catch (error) {
         console.error(error);
     }
