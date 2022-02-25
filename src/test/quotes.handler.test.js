@@ -35,4 +35,11 @@ describe('specificquoteHandler function', () => {
     await specificquoteHandler(req, res);
     expect(spy).toHaveBeenCalled();
   });
+  it('should give error if data is not fetched', async () => {
+    try {
+      await specificquoteHandler();
+    } catch (error) {
+      expect(error.message).toBe('data not fetched');
+    }
+  });
 });
