@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { quoteURL, getQuotes } = require('../src/services/quote.service');
-const { quoteHandler, specificQuoteHandler } = require('../src/handlers/quote.handler');
+
 jest.mock('axios');
 describe("fetchQuotes service", () => {
   it("when API call is successful should return list of quotes", async () => {
@@ -27,6 +27,4 @@ describe("fetchQuotes service", () => {
     );
   });
 });
-describe("fetchQuotes handler", () => {
 
-})
