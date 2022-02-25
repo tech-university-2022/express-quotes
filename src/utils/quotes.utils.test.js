@@ -1,4 +1,4 @@
-const {getFirstNQuotes, getNthQuote} = require('./first50.utils');
+const {getFirstNQuotes, getNthQuote} = require('./quotes.utils');
 const { testQuotes } = require('../constants/quotes.constants');
 describe('GetFirstNQuotes function', () => {
     it('should return a string of the first N Quotes in an array with indexes',() => {
@@ -59,7 +59,7 @@ describe('GetNthQuote function', () => {
     const testQuotes = [{author:'Poorna',text:'Hi'},{author:'Hoseok',text:'Hope'},{author:'Namjoon',text:'Rap'}];
     it('should return the quote at the Nth position',() => {
         expect(getNthQuote(testQuotes,2))
-        .toBe(`The quote at position 2: Hoseok: Hope <br>`);
+        .toBe(`The quote at position 2:<br> Hoseok: Hope <br>`);
     });
     it('should return invalid message if position is not given', () => {
         try{
