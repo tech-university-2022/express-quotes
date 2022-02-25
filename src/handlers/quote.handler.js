@@ -3,7 +3,7 @@ const { firstFiftyQuote, specificQuote } = require("../services/quote.service");
 
 const quoteHandler = async (req, res) => {
   try {
-    const firstFiftyQuoteArray = await firstFiftyQuote(req, res);
+    const firstFiftyQuoteArray = await firstFiftyQuote();
     res.json({
       firstFiftyQuoteArray
     }).status(200);
