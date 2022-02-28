@@ -1,9 +1,11 @@
 const express = require('express');
-const { firstFiftyHandler } = require('../handlers/quotes.handler');
+const { firstFiftyHandler, specificQuoteHandler } = require('../handlers/quotes.handler');
 
-const router = express.Router();
-router.get('/', firstFiftyHandler);
-
+const first50Router = express.Router();
+first50Router.get('/', firstFiftyHandler);
+const specificQuoteRouter = express.Router();
+specificQuoteRouter.get('/:index', specificQuoteHandler);
 module.exports = {
-  first50Router: router,
+  first50Router,
+  specificQuoteRouter,
 };
