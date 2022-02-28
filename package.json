@@ -1,7 +1,6 @@
 {
   "name": "express-basics",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -10,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.9.0",
+    "eslint": "^8.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "jest": "^27.5.1",
@@ -20,5 +19,14 @@
     "axios": "^0.26.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tech-university-2022/express-quotes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tech-university-2022/express-quotes/issues"
+  },
+  "homepage": "https://github.com/tech-university-2022/express-quotes#readme",
+  "description": ""
 }
