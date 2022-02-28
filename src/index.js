@@ -9,8 +9,8 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.use('/', healthRouter);
+app.use('/health', healthRouter);
 app.use('/quotes', quotesRouter);
-app.use('/:index', quotesRouter);
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
